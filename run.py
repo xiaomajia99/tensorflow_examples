@@ -4,11 +4,12 @@ import os
 import sys
 
 
-rootPath = os.getcwd() + "/tensorflow_examples"
-logPath = rootPath + "/logs/"
-dataPath = rootPath + "/data/"
-codePath = rootPath + "/mecode/"
-utilPath = rootPath + "/util/"
+rootPath = os.getcwd()
+protectPath = rootPath + "/tensorflow_examples"
+logPath = protectPath + "/logs/"
+dataPath = protectPath + "/data/"
+codePath = protectPath + "/mecode/"
+utilPath = rootPath + "/utils/"
 
 sys.path.append(codePath)
 sys.path.append(utilPath)

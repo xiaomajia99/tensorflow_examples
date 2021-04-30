@@ -3,7 +3,13 @@ import logging
 
 class LinearRegression:
     """
-
+    一元线性回归模型， 初始化init模型的的时候，要有训练数据和模型参数
+    train_x : 自变量
+    train_y : 因变量
+    train_w : 权重
+    train_b ：偏执
+    learn_rate : 学习率
+    train_steps : 训练次数
     """
     
     def __init__(self, 
@@ -15,8 +21,8 @@ class LinearRegression:
                 train_steps : int = 100):
         self.X = train_x
         self.Y = train_y
-        self.W = tf.Variable(train_w, name="weight")
-        self.B = tf.Variable(train_b, name="bias")
+        self.W = tf.keras.backend.variable(train_w, name="weight")
+        self.B = tf.keras.backend.variable(train_b, name="bias")
         self.learn_rate = learn_rate
         self.train_steps = train_steps
 
@@ -24,10 +30,10 @@ class LinearRegression:
         return self.W * self.X + self.B
 
     def meanSquare(self, y_pred, y_true):
-        return tf.reduce_mean(tf.square(y_pred - y_true))
+        return tf.keras.backend.mean(tf.keras.backend.square(y_pred - y_true))
 
     def fit(self):
-        opt = tf.optimizers.SGD(self.learn_rate)
+        opt = tf.keras.optimizers.SGD(learning_rate = self.learn_rate)
 
         for step in range(0, self.train_steps):
             self.run(opt)
